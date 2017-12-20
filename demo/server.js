@@ -10,6 +10,7 @@ const port = process.env.PORT || 4000;
 const spaceId = process.env.SPACE_ID;
 const cdaToken = process.env.CDA_TOKEN;
 const cmaToken = process.env.CMA_TOKEN;
+const locale = process.env.LOCALE;
 
 if (spaceId && cdaToken && cmaToken) {
   console.log('Space ID, CDA token and CMA token provided');
@@ -27,7 +28,7 @@ if (spaceId && cdaToken && cmaToken) {
 // 3. create a schema out of the space graph
 // 4. run a server
 function useProvidedSpace () {
-  const client = cfGraphql.createClient({spaceId, cdaToken, cmaToken});
+  const client = cfGraphql.createClient({spaceId, cdaToken, cmaToken, locale});
 
   client.getContentTypes()
   .then(cfGraphql.prepareSpaceGraph)
